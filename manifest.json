@@ -1,0 +1,11 @@
+{
+  "name": "SIM Mahasiswa Universitas Semantik",
+  "short_name": "SIM MHS",
+  "description": "Sistem Informasi Manajemen Mahasiswa Per Program Studi Universitas Semantik",
+  "start_url": "./index.php",
+  "display": "standalone",
+  "background_color": "#1e3c72",
+  "theme_color": "#1e3c72",
+  "orientation": "portrait-primary",
+  "icons": []
+}

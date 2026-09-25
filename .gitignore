@@ -1,0 +1,5 @@
+# Local/private configuration overrides
+config.php
+config.local.php
+.env
+.DS_Store
