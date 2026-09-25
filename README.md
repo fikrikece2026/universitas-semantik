@@ -1,32 +1,73 @@
-# SIM Mahasiswa Universitas Semantik
+# Sistem Informasi Manajemen Mahasiswa
+## Universitas Semantik
 
-Aplikasi PHP Native + MySQLi dengan RBAC tiga peran: Mahasiswa, Operator Prodi, Administrator.
+Sistem Informasi Manajemen Mahasiswa Universitas Semantik merupakan aplikasi berbasis web yang digunakan untuk mengelola data mahasiswa berdasarkan Program Studi.
 
-## Instalasi lokal (XAMPP/Laragon)
-1. Salin folder `sim_mahasiswa_semantik` ke `htdocs`.
-2. Buat database `universitassemantik` melalui phpMyAdmin.
-3. Import `database.sql`.
-4. Sesuaikan `config.php` (default lokal XAMPP).
-5. Buka `http://localhost/sim_mahasiswa_semantik/`.
+Aplikasi ini dibuat menggunakan PHP Native, MySQL, Bootstrap 5, dan menerapkan konsep Role-Based Access Control (RBAC) untuk membedakan hak akses Administrator, Operator/Program Studi, dan Mahasiswa.
 
-## Akun awal
-Setelah import database, jalankan `buat_admin.php` sekali untuk membuat akun administrator:
-- username: `admin`
-- password: `Admin123!`
+## Fitur Sistem
 
-Segera login, lalu hapus `buat_admin.php` dari server.
+### 1. Administrator
+Administrator memiliki akses untuk:
+- Login sebagai Administrator
+- Mengelola data mahasiswa
+- Mengelola pengguna/operator
+- Mengelola data Fakultas dan Program Studi
+- Melihat informasi sistem
 
-Akun operator dibuat oleh administrator melalui menu Pengguna. Data mahasiswa dapat ditambahkan melalui menu Mahasiswa. Password awal mahasiswa saat dibuat adalah `Mahasiswa123!` dan wajib diganti dengan mekanisme perubahan password (fitur dapat dikembangkan).
+### 2. Operator / Program Studi
+Operator memiliki akses untuk:
+- Login sebagai Operator
+- Mengelola data mahasiswa sesuai kebutuhan Program Studi
+- Melihat data mahasiswa
 
-## Hosting InfinityFree
-1. Buat database MySQL melalui Control Panel InfinityFree.
-2. Import `database.sql` melalui phpMyAdmin hosting.
-3. Ubah konfigurasi `config.php` sesuai detail MySQL hosting (hostname, username, password, nama database).
-4. Upload isi folder ini ke `htdocs` melalui File Manager/FTP.
-5. Pastikan situs memakai HTTPS agar Service Worker/PWA dapat berjalan.
-6. Jangan unggah kredensial database ke GitHub. Untuk publikasi, gunakan konfigurasi contoh dan simpan konfigurasi asli di luar repository.
+### 3. Mahasiswa
+Mahasiswa memiliki akses untuk:
+- Login menggunakan NPM dan password
+- Mengakses halaman mahasiswa
 
-## Catatan
-- Menu ditentukan melalui kode, sesuai instruksi tugas.
-- Operator hanya dapat mengelola mahasiswa pada prodi yang terhubung ke akunnya.
-- Password disimpan menggunakan `password_hash()` dan diverifikasi dengan `password_verify()`.
+## Role Pengguna
+
+| Role | Akses |
+|---|---|
+| Administrator | Pengelolaan sistem dan pengguna |
+| Operator | Pengelolaan data mahasiswa |
+| Mahasiswa | Akses data mahasiswa |
+
+## Teknologi
+
+- PHP Native
+- MySQL
+- MySQLi
+- Bootstrap 5
+- HTML5
+- CSS3
+- JavaScript
+- Progressive Web App (PWA)
+
+## Struktur Database
+
+Database menggunakan nama:
+
+`universitassemantik`
+
+Tabel utama:
+
+- `fakultas`
+- `prodi`
+- `role`
+- `pengguna`
+- `mahasiswa`
+
+Relasi utama:
+
+```text
+Fakultas
+   │
+   └── Prodi
+          │
+          └── Mahasiswa
+
+Role
+   │
+   └── Pengguna
